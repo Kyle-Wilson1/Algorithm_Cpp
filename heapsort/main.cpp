@@ -10,7 +10,7 @@ int main()
 	ifstream cin("a.in");
 	ofstream cout("a.out");
 
-	int HeapUp(int *heap, int n, int num);
+	int HeapUp(int *heap, int tail, int num);
 	int HeapDown(int *heap, int top, int n);
 
 	int num;
@@ -20,12 +20,12 @@ int main()
 	int temp;
 	for (int i=0; i<num; i++)
 	{
-		cin>>temp;	
+		cin>>temp;
 		//如果堆中元素还没有达到最大值，则插入到堆尾并向上调整，否则替换根元素并向下进行调整
 		if (total<TOTAL)
 		{
 			HeapUp(heap,total++,temp);
-		}	
+		}
 		else{
 			if (temp>heap[0])
 			{
@@ -33,7 +33,7 @@ int main()
 				HeapDown(heap,0,TOTAL-1);
 			}
 		}
-		
+
 	}
 
 	for (int i=0; i<TOTAL; i++)
@@ -50,7 +50,7 @@ int main()
 int HeapUp(int *heap, int tail, int num)
 {
     int i, j;
- 
+
     heap[tail] = num;//num插入堆尾
     i = tail;
     j = (i-1) / 2;//j指向i的父结点
@@ -66,7 +66,7 @@ int HeapUp(int *heap, int tail, int num)
     }
 
     heap[i]=num;
- 
+
     return 0;
 }
 
@@ -75,7 +75,7 @@ int HeapDown(int *heap, int top, int n)
 {
     int j = 2 * top + 1;    //左孩子结点
     int x = heap[top];
- 
+
     while (j <= n)
     {
     	//比较左右儿子，选择较小的一个
